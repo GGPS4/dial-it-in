@@ -281,7 +281,7 @@ const mbEsc = s => s.replace(/(["\\])/g, '\\$1');
 export async function musicBrainzLookup(q) {
   const { title, artist } = splitQuery(q);
   const query = artist ? `recording:"${mbEsc(title)}" AND artist:"${mbEsc(artist)}"` : `recording:"${mbEsc(title)}"`;
-  const res = await fetch(`${MB}/recording/?query=${encodeURIComponent(query)}&fmt=json&limit=15`, { headers: { Accept: 'application/json' }, signal: withTimeout() });
+  const res = await fetch(`${MB}/recording/?query=${encodeURIComponent(query)}&fmt=json&limit=50`, { headers: { Accept: 'application/json' }, signal: withTimeout() });
   if (!res.ok) throw new Error(`MusicBrainz answered ${res.status}`);
   const data = await res.json();
   const seen = new Map();
@@ -296,6 +296,18 @@ export async function musicBrainzLookup(q) {
   }
   // Prefer artists we have a rig for, then MusicBrainz score
   const list = [...seen.values()].sort((a, b) => (b.score - a.score) || ((findArtist(b.artist) ? 1 : 0) - (findArtist(a.artist) ? 1 : 0)));
+  // Recording dates are often reissues. Release groups (singles, albums) carry the original year.
+  if (list[0]) {
+    try {
+      const top = list[0];
+      const rq = `releasegroup:"${mbEsc(top.title)}" AND artist:"${mbEsc(top.artist)}"`;
+      const rg = await fetch(`${MB}/release-group/?query=${encodeURIComponent(rq)}&fmt=json&limit=25`, { headers: { Accept: 'application/json' }, signal: withTimeout(5000) });
+      if (rg.ok) {
+        const years = ((await rg.json())['release-groups'] || []).filter(g => g.score >= 80).map(g => parseInt((g['first-release-date'] || '').slice(0, 4))).filter(Boolean);
+        if (years.length) top.year = Math.min(top.year || 9999, ...years);
+      }
+    } catch { /* year stays as found */ }
+  }
   return list.slice(0, 6);
 }
 
