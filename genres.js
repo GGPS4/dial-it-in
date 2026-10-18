@@ -1,0 +1,88 @@
+// Genre fallbacks, used when a song's artist has no rig profile.
+// tags are matched against MusicBrainz genre/tag names.
+export const GENRES = [
+  { id: 'blues', label: 'Blues', tags: ['blues', 'electric blues', 'chicago blues', 'texas blues', 'delta blues'], pu: 'S',
+    r: 'Tweed Bass 4.5 5 6 5.5 6.5; rev Room Studio A 2 3', l: 'Tweed Bass 5.5 5 6.5 5.5 6.5; drv Tube Drive 2 5 7; rev Room Studio A 2.5 3' },
+  { id: 'blues-rock', label: 'Blues rock', tags: ['blues rock', 'british blues', 'boogie rock'], pu: 'H',
+    r: 'JM45 5.5 5 6.5 5 7; rev Room Studio A 2 3', l: 'JM45 6.5 5 7 5 7; drv Tube Drive 2 5 7; dly Digital Delay 1.5 360ms 2; rev Room Studio A 2.5 3' },
+  { id: 'rocknroll', label: "Rock 'n' roll", tags: ["rock and roll", "rock & roll", 'rockabilly', 'doo-wop', 'rhythm and blues'], pu: 'P',
+    r: 'American Deluxe 3.5 5 6 6 6; dly Digital Delay 2 110ms 1; rev Plate Short 2 3', l: 'American Deluxe 5 5 6.5 6 6; dly Digital Delay 2 110ms 1; rev Plate Short 2 3' },
+  { id: 'classic-rock', label: 'Classic rock', tags: ['classic rock', 'rock', 'hard rock', 'arena rock', 'album rock'], pu: 'H',
+    r: 'Plexiglas 5.5 5 6.5 5 7; rev Room Studio B 2 3', l: 'Plexiglas 6.5 5 7 5 7; dly Digital Delay 1.5 380ms 2; rev Room Studio B 2.5 3' },
+  { id: 'psych', label: 'Psychedelic rock', tags: ['psychedelic rock', 'psychedelic', 'acid rock', 'neo-psychedelia', 'psychedelic pop'], pu: 'S',
+    r: 'AC Boost 4.5 4.5 6 4.5 6; mod Phaser 3 5; rev Plate Rich 3 4', l: 'AC Boost 5 4.5 6 4.5 6; drv Fuzz Face 7 6; mod UniVibe 3 5 5; dly Echo Tape 2.5 350ms 3; rev Plate Rich 3 4' },
+  { id: 'prog', label: 'Progressive rock', tags: ['progressive rock', 'art rock', 'symphonic rock'], pu: 'H',
+    r: 'Plexiglas 4.5 5 6.5 5.5 6.5; mod Chorus 2 2 5 3; rev Plate Short 2.5 3', l: 'Plexiglas 6.5 5 7 5.5 6.5; dly Digital Delay 2.5 420ms 3; rev Hall Medium 3 4', c: 'Black Duo 3 5 6 6 6; mod Chorus 2 3 5 4; dly Digital Delay 2.5 420ms 3; rev Hall Medium 3 4' },
+  { id: 'southern', label: 'Southern rock', tags: ['southern rock', 'heartland rock', 'country rock'], pu: 'H',
+    r: 'Plexiglas 5 5 6 5.5 7; rev Room Studio A 2 3', l: 'Plexiglas 6.5 5 6.5 5.5 7; dly Digital Delay 1.5 330ms 2; rev Room Studio A 2.5 3' },
+  { id: 'glam', label: '80s hard rock / glam', tags: ['glam metal', 'hair metal', 'aor', 'pop metal', 'glam rock'], pu: 'HH',
+    r: 'RB 101 5.5 5 6 5.5 6.5; mod Chorus 2 2 5 3; rev Plate Rich 2.5 4', l: 'RB 101 6.5 5 7 5.5 6.5; dly Digital Delay 2.5 400ms 3; rev Plate Rich 3 4', c: 'Black Duo 3 5 5.5 6 6; mod Chorus 2.5 4 5 4; dly Digital Delay 2.5 400ms 3; rev Plate Rich 3 4' },
+  { id: 'heavy-metal', label: 'Heavy metal (classic)', tags: ['heavy metal', 'nwobhm', 'speed metal', 'power metal'], pu: 'HH',
+    r: 'Plexiglas 7 5 6.5 5.5 7; drv Tube Drive 1.5 5 7; gate 3 3; rev Room Studio B 1.5 3', l: 'Plexiglas 7.5 5 7 5.5 7; drv Tube Drive 2.5 5 7; dly Digital Delay 2 400ms 2; rev Plate Rich 2.5 4' },
+  { id: 'thrash', label: 'Thrash metal', tags: ['thrash metal', 'crossover thrash'], pu: 'A',
+    r: 'American High Gain 6 4.5 5.5 6 6.5; drv Tube Drive 0.5 5 7.5; gate 4.5 3; rev Room Studio A 1 2', l: 'American High Gain 6.5 4.5 6.5 6 6.5; drv Tube Drive 1.5 5 7; dly Digital Delay 2 400ms 2; rev Plate Short 2.5 3', c: 'Black Duo 3 5 5.5 6 6; mod Chorus 2 3 5 4; rev Plate Short 2.5 3' },
+  { id: 'groove', label: 'Groove metal', tags: ['groove metal'], pu: 'HH',
+    r: 'SwitchAxe 6.5 5.5 5 6.5 6.5; gate 5 3; rev Room Studio A 1 2', l: 'SwitchAxe 7 5.5 5.5 6.5 6.5; dly Digital Delay 2 380ms 2; rev Plate Short 2 3' },
+  { id: 'nu-metal', label: 'Nu metal', tags: ['nu metal', 'rap metal', 'alternative metal', 'rap rock'], pu: 'A',
+    r: 'Treadplate 5.5 4 5.5 6 6; drv Tube Drive 0 5 7; gate 5 3; rev Room Studio A 1 2', l: 'Treadplate 6 4 6 6 6; dly Digital Delay 2.5 380ms 3; rev Hall Medium 2.5 4', c: 'Black Duo 3 5 5 6 6; mod Chorus 2.5 3 5 4; dly Digital Delay 2.5 380ms 3; rev Hall Medium 3 4' },
+  { id: 'metalcore', label: 'Metalcore / modern metal', tags: ['metalcore', 'melodic metalcore', 'post-hardcore', 'deathcore', 'progressive metalcore', 'melodic death metal'], pu: 'A',
+    r: 'Insane 5 3.5 6 6 6; drv Tube Drive 0 6 8; gate 5.5 3; rev Room Studio A 1 2', l: 'BE 101 5.5 4.5 6.5 6 6; gate 4 3; dly Digital Delay 3 420ms 3; rev Hall Ambient 3 5', c: 'Two Stone SP50 3 5 5.5 6 6; mod Chorus 2 3 5 4; dly Digital Delay 3 420ms 3; rev Hall Ambient 3.5 6' },
+  { id: 'djent', label: 'Djent / prog metal', tags: ['djent', 'progressive metal', 'math metal', 'technical death metal'], pu: 'HH',
+    r: 'Insane 5 3.5 6 6.5 6; drv Tube Drive 0 6 8; gate 6 3; rev Room Studio A 0.5 2', l: 'SwitchAxe 5.5 4 6.5 6 6; gate 4 3; dly Digital Delay 3 420ms 3; rev Hall Ambient 3 5', c: 'Two Stone SP50 3 5 5.5 6 6; cmp Sustain Comp 5 5 5 5; mod Chorus 2 3 5 4; dly Digital Delay 3 420ms 3; rev Hall Ambient 3.5 6' },
+  { id: 'extreme', label: 'Death / black metal', tags: ['death metal', 'black metal', 'grindcore', 'brutal death metal'], pu: 'A',
+    r: 'Insane 6508 5.5 4.5 6 6 6; drv Tube Drive 0 5 8; gate 6 2; rev Room Studio A 0.5 2', l: 'Insane 6508 6 4.5 6.5 6 6; gate 4.5 3; dly Digital Delay 2 400ms 2; rev Hall Medium 2.5 4' },
+  { id: 'doom', label: 'Doom / stoner / sludge', tags: ['doom metal', 'stoner rock', 'stoner metal', 'sludge metal', 'desert rock', 'drone metal'], pu: 'H',
+    r: 'Rocker V 6 5.5 6.5 4.5 6; drv Guitar Muff 4 4 6; rev Room Studio B 1.5 3', l: 'Rocker V 6 5.5 7 4.5 6; drv Fuzz Face 8 6; dly Digital Delay 2 420ms 3; rev Room Studio B 2 3' },
+  { id: 'grunge', label: 'Grunge', tags: ['grunge', 'post-grunge'], pu: 'H',
+    r: 'RB 101 5.5 5 6 5 6; drv Guitar Muff 4 5 6; rev Room Studio B 1.5 3', l: 'RB 101 6 5 6.5 5 6; drv Tube Drive 2 5 7; rev Room Studio B 2 3', c: 'AD Clean 3 5 6 5.5 6; mod Chorus 2 4 5 4; rev Room Studio A 2 3' },
+  { id: 'alt-rock', label: 'Alternative rock', tags: ['alternative rock', 'alternative', 'modern rock', 'college rock'], pu: 'H',
+    r: 'Plexiglas 6 5 6.5 5.5 7; rev Room Studio B 2 3', l: 'Plexiglas 6.5 5 7 5.5 7; drv Tube Drive 2 5 7; dly Digital Delay 2 380ms 2; rev Room Studio B 2.5 3', c: 'AC Boost 3 5 6 4.5 6; rev Room Studio A 2 3' },
+  { id: 'indie', label: 'Indie rock', tags: ['indie rock', 'indie', 'garage rock revival', 'post-punk revival', 'lo-fi', 'indie pop'], pu: 'S',
+    r: 'Lux Verb 4.5 4.5 6.5 6 6; rev Room Studio A 1.5 3', l: 'Lux Verb 5.5 4.5 6.5 6 6; drv Over Drive 3 5 6; rev Room Studio A 2 3', c: 'Lux Verb 2.5 5 6 6 6; mod Chorus 2 2 5 3; rev Plate Short 2.5 3' },
+  { id: 'garage', label: 'Garage rock', tags: ['garage rock', 'garage punk', 'proto-punk'], pu: 'P',
+    r: 'Checkmate 6 5 6.5 6 6.5; rev Room Studio A 1.5 3', l: 'Checkmate 6.5 5 6.5 6 6.5; drv Fuzz Face 7 6; rev Room Studio A 1.5 3' },
+  { id: 'punk', label: 'Punk', tags: ['punk', 'punk rock', 'hardcore punk', 'skate punk', 'street punk'], pu: 'H',
+    r: 'Plexiglas 7 5 6.5 5.5 7.5; rev Room Studio A 0.5 2', l: 'Plexiglas 7.5 5 7 5.5 7.5; rev Room Studio A 1 2' },
+  { id: 'pop-punk', label: 'Pop punk / emo', tags: ['pop punk', 'pop-punk', 'emo', 'emo pop', 'midwest emo', 'easycore'], pu: 'HH',
+    r: 'Treadplate 5 4.5 6 6 6; gate 3 3; rev Room Studio A 1 2', l: 'Treadplate 5.5 4.5 6.5 6 6; dly Digital Delay 2.5 380ms 3; rev Plate Rich 2.5 4', c: 'Black Duo 3 5 5.5 6 6; mod Chorus 2 3 5 4; dly Digital Delay 2.5 380ms 3; rev Plate Rich 3 4' },
+  { id: 'post-punk', label: 'Post-punk / new wave / goth', tags: ['post-punk', 'new wave', 'gothic rock', 'darkwave', 'synthpop', 'coldwave'], pu: 'S',
+    r: 'Silver 120 3 4.5 6 6 6; mod Chorus 2.5 4 5 4; dly Digital Delay 2.5 380ms 3; rev Hall Medium 3 4', l: 'Silver 120 3.5 4.5 6 6 6; mod Flanger 1.5 5 4 4; dly Digital Delay 3 380ms 3; rev Hall Medium 3.5 5' },
+  { id: 'jangle', label: 'Jangle / Britpop', tags: ['jangle pop', 'britpop', 'madchester', 'c86'], pu: 'S',
+    r: 'AC Boost 3.5 4.5 6 4.5 6; cmp Red Comp 4 3; rev Room Studio A 2 3', l: 'AC Boost 5 4.5 6.5 4.5 6; rev Room Studio B 2.5 3' },
+  { id: 'shoegaze', label: 'Shoegaze / dream pop', tags: ['shoegaze', 'dream pop', 'noise pop', 'blackgaze', 'nu-gaze'], pu: 'S',
+    r: 'Lux Verb 4.5 5 6 5.5 6; drv Guitar Muff 6 4 5; mod Chorus 2 3 5 4; rev Hall Ambient 4 7', l: 'Lux Verb 5 5 6 5.5 6; drv Guitar Muff 8 4 5; dly Reverse Delay 4 500ms 4; rev Hall Ambient 4.5 7' },
+  { id: 'post-rock', label: 'Post-rock / ambient', tags: ['post-rock', 'ambient', 'instrumental rock', 'math rock'], pu: 'T',
+    r: 'Black Duo 3 5 6 6 6; dly Digital Delay 3 450ms 4; rev Hall Ambient 4 7', l: 'Black Duo 4.5 5 6 6 6; drv Guitar Muff 6 5 6; dly Digital Delay 3.5 450ms 4; rev Hall Ambient 4 7' },
+  { id: 'surf', label: 'Surf', tags: ['surf', 'surf rock', 'instrumental surf'], pu: 'S',
+    r: 'Black Duo 3.5 5 6 6 6; rev Plate Long 4.5 4 4 6 3 7', l: 'Black Duo 4.5 5 6 6 7; rev Plate Long 4.5 4 4 6 3 7' },
+  { id: 'country', label: 'Country', tags: ['country', 'country pop', 'outlaw country', 'americana', 'bluegrass', 'red dirt', 'honky tonk', 'bakersfield sound'], pu: 'T',
+    r: 'Lux Verb 3 5 6 5.5 6; cmp Red Comp 5 4; dly Digital Delay 2 120ms 1; rev Plate Short 2 3', l: 'AC Boost 5 4.5 6.5 4.5 6; cmp Red Comp 5 4; dly Digital Delay 2.5 360ms 2; rev Plate Short 2.5 3' },
+  { id: 'funk', label: 'Funk / disco', tags: ['funk', 'disco', 'p-funk', 'funk rock', 'boogie'], pu: 'S',
+    r: 'Black Duo 2.5 4 6 6.5 6; cmp Red Comp 6 5; rev Room Studio A 1.5 2', l: 'Black Duo 4 4 6.5 6 6; cmp Auto Wah 6 5 6; rev Room Studio A 2 2' },
+  { id: 'soul', label: 'Soul / R&B / neo-soul', tags: ['soul', 'r&b', 'neo soul', 'contemporary r&b', 'motown', 'gospel', 'quiet storm'], pu: 'S',
+    r: 'Lux Verb 2.5 5.5 6 4.5 6; cmp LA Comp 4 3; mod Chorus 2 2 4 3; rev Plate Short 2.5 3', l: 'Lux Verb 4 5.5 6.5 4.5 6; cmp LA Comp 4 3; dly Digital Delay 2 360ms 2; rev Plate Short 2.5 3' },
+  { id: 'jazz', label: 'Jazz', tags: ['jazz', 'jazz fusion', 'bebop', 'smooth jazz', 'cool jazz', 'swing', 'hard bop'], pu: 'H',
+    r: 'Black Duo 2 6 6 3.5 6; rev Room Studio A 2 3', l: 'Black Duo 2.5 6 6.5 3.5 6; rev Room Studio A 2 3' },
+  { id: 'fusion', label: 'Fusion / shred', tags: ['fusion', 'instrumental', 'shred', 'neoclassical metal', 'guitar virtuoso'], pu: 'HH',
+    r: 'Two Stone SP50 4 5 6 5.5 6; rev Plate Short 2 3', l: 'BE 101 5.5 5 6.5 5.5 6; dly Digital Delay 2.5 400ms 3; rev Plate Rich 2.5 4' },
+  { id: 'reggae', label: 'Reggae / ska', tags: ['reggae', 'ska', 'roots reggae', 'dub', 'ska punk', 'rocksteady'], pu: 'S',
+    r: 'Black Duo 2.5 3.5 5.5 7 6; cmp Red Comp 4 3; rev Room Studio A 1.5 2', l: 'Black Duo 4.5 5 6.5 6 6; dly Echo Tape 2.5 350ms 4; rev Plate Short 2.5 3' },
+  { id: 'pop', label: 'Pop', tags: ['pop', 'dance-pop', 'electropop', 'pop rock', 'teen pop', 'adult contemporary', 'k-pop', 'synth-pop'], pu: 'S',
+    r: 'Two Stone SP50 3 5 5.5 6 6; cmp Red Comp 5 4; mod Chorus 2 3 5 4; rev Plate Short 2.5 3', l: 'Plexiglas 5.5 5 6.5 5.5 6.5; dly Digital Delay 2.5 380ms 3; rev Hall Medium 3 4' },
+  { id: 'singer', label: 'Acoustic / folk / singer-songwriter', tags: ['folk', 'singer-songwriter', 'acoustic', 'folk rock', 'indie folk', 'contemporary folk', 'worship', 'ccm'], pu: 'AC',
+    r: 'Jumbo 0 5 5.5 5.5 6; cmp LA Comp 4 3; rev Room Studio B 2 3', l: 'Pure Acoustic 0 5 5.5 5.5 6; cmp LA Comp 4 3; rev Hall Medium 3 4' },
+  { id: 'hip-hop', label: 'Hip hop / trap (guitar sample feel)', tags: ['hip hop', 'trap', 'rap', 'cloud rap', 'emo rap', 'lo-fi hip hop'], pu: 'S',
+    r: 'Lux Verb 2 5.5 6 4 6; mod Chorus 2 3 4 4; rev Plate Rich 3 5', l: 'Lux Verb 3.5 5.5 6 4 6; mod Vibrato 3 3; dly Digital Delay 2.5 400ms 3; rev Plate Rich 3 5' },
+];
+
+export const GENRE_DEFAULT = 'classic-rock';
+
+// Decade nudges applied on top of a genre template.
+export function decadeNudge(year) {
+  if (!year) return null;
+  if (year < 1965) return { label: 'Pre-1965 recordings had low gain and small amps', gain: -1.2, treble: 0, reverb: +0.5 };
+  if (year < 1975) return { label: 'Late 60s / early 70s: cranked amps, little pedal gain', gain: -0.4, treble: 0, reverb: 0 };
+  if (year < 1990) return null;
+  if (year < 2000) return { label: '90s production: drier and mid-forward', gain: 0, treble: 0, reverb: -0.4 };
+  return { label: 'Modern production: tighter low end, gated', gain: 0, bass: -0.3, reverb: 0 };
+}
