@@ -234,11 +234,12 @@ export function resultFromSong(s) {
   };
 }
 
-export function resultFromArtist(a, title, year) {
+export function resultFromArtist(a, title, year, shownArtist) {
   const parts = partsFromProfile(a);
   return {
     source: 'artist', confidence: 'medium',
-    title: title || `${a.n}: signature tones`, artist: a.n, year,
+    title: title || `${a.n}: signature tones`, artist: shownArtist || a.n, year,
+    guitarist: shownArtist && shownArtist !== a.n ? `Rig: ${a.n}` : '',
     guitar: a.guitar, pu: a.pu, rig: a.rig, note: a.note || '',
     parts,
   };

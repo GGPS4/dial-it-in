@@ -330,7 +330,7 @@ function renderResult(animate = true) {
     <header class="r-head">
       <div class="r-title">
         <h1 class="hand">${esc(R.title)}</h1>
-        <p class="r-meta">${esc(R.artist)}${R.year ? `, ${R.year}` : ''}${R.guitarist ? `. ${esc(R.guitarist)} on guitar` : ''}</p>
+        <p class="r-meta">${esc(R.artist)}${R.year ? `, ${R.year}` : ''}${R.guitarist ? `. ${esc(R.guitarist.startsWith('Rig: ') ? R.guitarist.replace('Rig: ', 'Rig based on ') : R.guitarist + ' on guitar')}` : ''}</p>
       </div>
       <div class="stamp s-${R.source}" title="${esc(stampD)}"><span>${stampT}</span></div>
     </header>
@@ -480,7 +480,7 @@ async function run(q, opts = {}) {
 
   if (profile) {
     const isArtistOnly = !meta && findArtist(q);
-    state.result = resultFromArtist(profile, isArtistOnly ? null : (meta?.title || splitQuery(q).title), meta?.year);
+    state.result = resultFromArtist(profile, isArtistOnly ? null : (meta?.title || splitQuery(q).title), meta?.year, isArtistOnly ? null : (meta?.artist || splitQuery(q).artist || null));
     return renderResult();
   }
 
