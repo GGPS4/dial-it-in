@@ -32,7 +32,7 @@ export const LAYOUTS = {
 };
 
 export const DEFAULT_GUITARS = [
-  { id: 'g1', name: 'My Strat', layout: 'SSS', split: false },
+  { id: 'g1', name: 'PRS SE CE 24', layout: 'HH', split: true },
 ];
 
 export const ROOMS = {
