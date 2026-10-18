@@ -622,12 +622,16 @@ function powerOn() {
   const count = (from, to, ms) => new Promise(res => {
     const t0 = performance.now();
     const vals = svg.querySelectorAll('.val');
+    let done = false;
+    const finish = () => { if (done) return; done = true; vals.forEach(v => (v.textContent = fmt(to))); res(); };
     const step = now => {
+      if (done) return;
       const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3);
       vals.forEach(v => (v.textContent = fmt(Math.round((from + (to - from) * e) * 2) / 2)));
-      k < 1 ? requestAnimationFrame(step) : res();
+      k < 1 ? requestAnimationFrame(step) : finish();
     };
     requestAnimationFrame(step);
+    setTimeout(finish, ms + 80); // background tabs pause rAF; never stall the boot
   });
   const wait = ms => new Promise(r => setTimeout(r, ms));
   return (async () => {
